@@ -58,9 +58,9 @@ func main() {
 				}
 
 				if do.DigitalObjectID != row.GetComponentID() {
-					fmt.Println(do.DigitalObjectID, "ERROR")
+					fmt.Println(row.GetURI(), do.URI, do.DigitalObjectID, "ERROR")
 				} else {
-					fmt.Println(do.DigitalObjectID, "OK")
+					fmt.Println(row.GetURI(), do.URI, do.DigitalObjectID, "OK")
 				}
 			}
 		}
