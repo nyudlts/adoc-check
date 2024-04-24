@@ -1,0 +1,5 @@
+github.com/nyudlts/go-aspace v0.6.1 h1:BWHTeFg/NGfs13pkmwXJA6yowJN36B/aukmJbJQaX0I=
+github.com/nyudlts/go-aspace v0.6.1/go.mod h1:XjLzY7ig8xq5qgFpfyIXb6BJQ68f9e6V5zkI8nF7EHc=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v2 v2.3.0 h1:clyUAQHOM3G0M3f5vQj7LuJrETvjVot3Z5el9nffUtU=
+gopkg.in/yaml.v2 v2.3.0/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
