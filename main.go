@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bufio"
+	"bytes"
+	"encoding/csv"
 	"flag"
-	"fmt"
 	"os"
+	"strings"
 
 	"github.com/nyudlts/go-aspace"
 )
@@ -33,6 +36,10 @@ func main() {
 		panic(err)
 	}
 
+	var b bytes.Buffer
+	out := csv.NewWriter(bufio.NewWriter(&b))
+	out.Comma = '\t'
+
 	for _, row := range wo.Rows {
 		repoId, aoURI, err := aspace.URISplit(row.GetURI())
 		if err != nil {
@@ -58,12 +65,14 @@ func main() {
 				}
 
 				if do.DigitalObjectID != row.GetComponentID() {
-					fmt.Println(row.GetURI(), do.URI, do.DigitalObjectID, "ERROR")
+					out.Write([]string{row.GetURI(), do.URI, do.DigitalObjectID, "ERROR"})
 				} else {
-					fmt.Println(row.GetURI(), do.URI, do.DigitalObjectID, "OK")
+					out.Write([]string{row.GetURI(), do.Title, do.URI, do.DigitalObjectID, "OK"})
 				}
+				out.Flush()
 			}
 		}
 	}
-
+	strings.Trim(b.String(), "\n")
+	os.WriteFile("adoc-check.tsv", b.Bytes(), 0777)
 }
