@@ -56,12 +56,14 @@ func main() {
 				doURI := instance.DigitalObject["ref"]
 				_, doID, err := aspace.URISplit(doURI)
 				if err != nil {
-					panic(err)
+					out.Write([]string{row.GetURI(), "", "", "ERROR"})
+					continue
 				}
 
 				do, err := client.GetDigitalObject(repoId, doID)
 				if err != nil {
-					panic(err)
+					out.Write([]string{row.GetURI(), "", "", "ERROR"})
+					continue
 				}
 
 				if do.DigitalObjectID != row.GetComponentID() {
